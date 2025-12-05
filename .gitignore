@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+.expo/
+dist/
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# Production
+build/
+release/
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing
+coverage/
