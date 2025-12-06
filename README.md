@@ -2,49 +2,114 @@
 
 TuneTrace is a mobile application built with React Native that helps users discover concerts, track their favorite artists, and save upcoming events. The app connects to multiple music APIs to provide comprehensive concert listings.
 
-## ✨ Features
+# ✨ Features
 
-### 🎤 Core Features
-- **Concert Discovery**: Browse concerts by city and genre
-- **Artist Tracking**: Follow your favorite artists and get notifications
-- **Favorites System**: Save concerts for later reference
-- **Real-time Updates**: Get the latest concert information
-- **Multi-source Data**: Aggregates data from multiple ticketing platforms
+## Concert Discovery
 
-### 👤 User Features
-- **Authentication**: Secure login/register system
-- **Personalized Dashboard**: Track your artists and saved concerts
-- **Search & Filters**: Find concerts by location, genre, and date
-- **Price Tracking**: View ticket price ranges in real-time
+- Search concerts by city and genre
 
-### 🛠️ Technical Features
+- View detailed concert information including artists, venue, date, and pricing
+
+- Real-time data from Ticketmaster API
+
+- Offline support with cached data
+
+## User Management
+
+- Secure authentication (register/login)
+
+- User profiles with activity stats
+
+- Tracked artists and favorite concerts
+
+- Personalized notifications
+
+## Artist Tracking
+
+- Search and follow your favorite artists
+
+- Get notified when tracked artists announce new concerts
+
+- View all tracked artists in one place
+
+## Price Alerts
+
+- Set target prices for concerts
+
+- Get notified when ticket prices drop
+
+- Manage all price alerts in one screen
+
+## Real-time Notifications
+
+- WebSocket-based real-time updates
+
+- Concert announcements for tracked artists
+
+- Price drop alerts
+
+- Mark as read and delete functionality
+
+## Calendar Integration
+
+- Add concerts directly to device calendar
+
+- Automatically sets 2-hour event duration
+
+- Includes venue and artist information
+
+## Favorites System
+
+- Save your favorite concerts
+
+- Quick access to saved events
+
+- Remove favorites when no longer needed
+
+## Tech Stack
+
+- Frontend: React Native, TypeScript
+
+- State Management: React Hooks, Context API
+
+- Navigation: Screen-based navigation
+
+- Storage: AsyncStorage for offline data
+
+- Authentication: JWT tokens
+
+- Real-time: WebSocket connections
+
+- Calendar: Expo Calendar API
+
+- Sharing: React Native Share API
+
+- Styling: React Native StyleSheet
+
+### Technical Features
 - **Cross-platform**: Built with React Native for iOS and Android
 - **Backend Integration**: Connects to custom Node.js API
 - **Offline Support**: Caches data for offline access
 - **Push Notifications**: Get alerts for new concerts (coming soon)
 
-## 📱 Screens
+# Quick Start
 
-1. **Home Screen**: Browse concerts with search and filters
-2. **Concert Details**: View detailed information about events
-3. **Artist Search**: Find and track artists
-4. **Tracked Artists**: Manage your followed artists
-5. **Favorites**: View saved concerts
-6. **Profile**: User account management
+## Prerequisites
+**Before running this project, ensure you have:**
 
-## 🚀 Quick Start
+- Node.js 16+ installed
 
-### Prerequisites
-- Node.js 16+
-- npm or yarn
-- Expo CLI
-- iOS Simulator or Android Emulator (or physical device)
+- Expo CLI installed globally
+
+- iOS Simulator (for Mac) or Android Studio (for Android)
+
+- Backend server running (see setup below)
 
 ### Installation
 
 1. **Clone the repository**
-```bash
-git clone https://github.com/EDLabel/tunetrace.git
+```
+git clone <your-repository-url>
 cd tunetrace/mobile
 ```
 2. **Install dependencies**
@@ -58,28 +123,104 @@ yarn install
    - Update the IP address in App.tsx (line 16)
 
    - Make sure your backend server is running
+   
 4. **Run the app**
 ```
-# For iOS
-npx expo start --ios
-
-# For Android
-npx expo start --android
-
-# Or use the Expo Go app on your phone
 npx expo start
 ```
+
+- Press i to open iOS simulator
+
+- Press a to open Android emulator
+
+- Scan QR code with Expo Go app on physical device
+
+# Screens
+
+## Home Screen
+
+- Search concerts by city
+
+- View all upcoming concerts
+
+- Quick navigation to all features
+
+- Backend connection status
+
+## Concert Detail Screen
+
+- Complete concert information
+
+- Price alert setting
+
+- Add to calendar
+
+- Share with friends
+
+- Track all artists
+
+## Artist Search Screen
+
+- Search artists by name
+
+- Filter by genre (Rock, Pop, Hip Hop, etc.)
+
+- Sort by name or popularity
+
+- Track/untrack artists
+
+## Tracked Artists Screen
+
+- View all followed artists
+
+- See tracking duration
+
+- One-tap untrack
+
+## Favorites Screen
+
+- All saved concerts
+
+- Quick access to favorite events
+
+- Remove favorites
+
+## Notifications Screen
+
+- Real-time notifications
+
+- Mark as read/delete
+
+- Priority alerts with popups
+
+## Price Alerts Screen
+
+- Manage all price alerts
+
+- View alert status (active/inactive)
+
+- Remove alerts
+
+## Profile Screen
+
+- User information
+
+- Activity statistics
+
+- Logout functionality
+
 ### Backend Setup
-The mobile app requires a backend server. Set it up separately:
+
+**The mobile app requires a backend server. Set it up separately:**
 1. **Clone the backend repository**
 ```
-git clone https://github.com/EDLabel/tunetrace-backend.git
-cd tunetrace-backend
+git clone <your-repository-url>
+cd tunetrace/backend
 ```
 2. **Install and run backend**
 ```
 npm install
-npm start
+npm run dev
 ```
 3. **Configure API endpoints in the mobile app**
 
@@ -93,84 +234,108 @@ mobile/
 ├── assets/            # Images, fonts, etc.
 └── components/        # Reusable components (if any)
 ```
-## Configuration
+# Configuration
 
-### API Configuration
+## Environment Setup
 
-**Update the API base URL in App.tsx:**
-```
-const YOUR_COMPUTER_IP = '192.168.1.100'; // Change to your IP
-const API_BASE = `http://${YOUR_COMPUTER_IP}:3000`;
-```
+1. IP Address Configuration:
+
+- Update YOUR_COMPUTER_IP in App.tsx to match your computer's IP
+
+- Ensure both mobile device and backend are on same network
+
+2. Backend API:
+
+- The app expects backend running at http://YOUR_IP:3000
+
+- WebSocket connection at ws://YOUR_IP:3000
+
+3. Calendar Permissions:
+
+- iOS: Add NSCalendarsUsageDescription to Info.plist
+
+- Android: Add calendar permissions to AndroidManifest.xml
+
 ## Dependencies
 ### Core Dependencies
-- React Native 0.72+
-
-- Expo SDK 49+
-
-- TypeScript
-
-- React Navigation
-
-- React Native Safe Area Context
-
-### Key Packages
-
-- @react-native-async-storage/async-storage: Local storage
-
-- react-native-safe-area-context: Safe area handling
-
-- expo-constants: App constants
-
-- expo-status-bar: Status bar management
-
-## Testing
-**Run tests with:**
 ```
-npm test
-# or
-yarn test
+{
+"react": "18.2.0",
+"react-native": "0.73.6",
+"expo": "~50.0.0",
+"@react-native-async-storage/async-storage": "1.21.0",
+"react-native-safe-area-context": "4.8.2",
+"expo-calendar": "~12.7.0"
+}
 ```
 
-## Authentication
-**The app uses JWT-based authentication with:**
+## Troubleshooting
 
-- Email/password registration
+### Common Issues
 
-- Secure token storage
+1. Backend Connection Failed
 
-- Protected routes
+   - Check if backend server is running
 
-- Automatic session management
+   - Verify IP address in App.tsx
 
-## API Documentation
-### Endpoints
-- GET /api/concerts - Get concerts by city
+   - Ensure devices are on same network
 
-- POST /api/auth/login - User login
+2. WebSocket Not Connecting
 
-- POST /api/auth/register - User registration
+   - Check backend WebSocket server
 
-- GET /api/artists/search - Search artists
+   - Verify authentication token
 
-- POST /api/artists/track - Track an artist
+   - Check network permissions
 
-- GET /api/concerts/favorites - Get user favorites
+3. Calendar Integration Not Working
 
-## UI/UX Features
-- Responsive Design: Works on all screen sizes
+   - Ensure calendar permissions are granted
 
-- Dark Mode: Coming soon
+   - Check device calendar app
 
-- Smooth Animations: Native-like transitions
+4. Images Not Loading
 
-- Accessibility: VoiceOver and TalkBack support
+   - Check internet connection
 
-## Platform Support
-| Platform    | 	Version|	Status |
-|------------|---------|------------------|
-| iOS| 	13.0+          |	✅ Fully Supported|
-| Android| 	8.0+           | 	✅ Fully Supported |
+   - Verify image URLs in concert data
+
+## Design Principles
+
+- Minimalist Design: Clean interface focused on content
+
+- Consistent Color Scheme: Blue (#007AFF) primary with supporting colors
+
+- Card-Based Layout: Information presented in clear cards
+
+- Responsive Design: Works on both iOS and Android
+
+- Accessibility: Proper contrast ratios and touch targets
+
+## Security Features
+
+- JWT token authentication
+
+- Secure credential storage
+
+- Protected API endpoints
+
+- Input validation
+
+- Error boundary handling
+
+## Performance Optimizations
+
+- FlatList for efficient scrolling
+
+- Image caching
+
+- Lazy loading of concert data
+
+- Offline data persistence
+
+- WebSocket for real-time updates
 
 ## Version History
 ### v1.0.0 (Current)
@@ -186,8 +351,6 @@ yarn test
 - Favorite system
 
 ### Planned Features (v1.1.0)
-
-- Push notifications
 
 - Dark mode
 
@@ -213,15 +376,6 @@ yarn test
 
 - Open a Pull Request
 
-## Code Style
-- Follow TypeScript best practices
-
-- Use functional components with hooks
-
-- Write meaningful comments
-
-- Add tests for new features
-
 ## License
 **This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.**
 
@@ -237,23 +391,8 @@ yarn test
 
 - [Ticketmaster API](https://developer.ticketmaster.com/) for concert data
 
-- [Spotify API](https://developer.spotify.com/) for artist information
-
 - [Expo](https://expo.dev/) for the amazing development platform
 
 - React Native community for excellent libraries
-
-## Analytics
-**The app collects anonymous usage data to improve features:**
-
-- Feature usage statistics
-
-- Crash reports
-
-- Performance metrics
-
-**You can opt out in Settings.**
-
-## Made with ❤️ by the TuneTrace team
 
 **Happy concert hunting!** 🎶
